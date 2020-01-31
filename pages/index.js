@@ -1,6 +1,5 @@
-import React from 'react'
-import Head from 'next/head'
-import Nav from '../components/nav'
+import React from 'react';
+import Head from 'next/head';
 
 const Home = () => (
   <div>
@@ -9,7 +8,7 @@ const Home = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <Nav />
+    
 
     <div className="hero">
       <h1 className="title">Welcome to Next.js!</h1>
@@ -18,20 +17,23 @@ const Home = () => (
       </p>
 
       <div className="row">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Learn more about Next.js in the documentation.</p>
+        <a href="/Urunler" className="card">
+          <h3> Ürünler &rarr;</h3>
         </a>
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Next.js Learn &rarr;</h3>
-          <p>Learn about Next.js by following an interactive tutorial!</p>
+        <a href="/Siparisler" className="card">
+          <h3> Siparişler &rarr;</h3>
         </a>
-        <a
-          href="https://github.com/zeit/next.js/tree/master/examples"
-          className="card"
-        >
-          <h3>Examples &rarr;</h3>
-          <p>Find other example boilerplates on the Next.js GitHub.</p>
+        <a href="/Kategoriler" className="card">
+          <h3> Kategoriler &rarr;</h3>
+        </a>
+        <a href="/Kampanyalar" className="card">
+          <h3> Kampanyalar &rarr;</h3>
+        </a>
+        <a href="/Analiz" className="card">
+          <h3> Analiz &rarr;</h3>
+        </a>
+        <a href="/Ayarlar" className="card">
+          <h3> Ayarlar &rarr;</h3>
         </a>
       </div>
     </div>
@@ -83,6 +85,6 @@ const Home = () => (
       }
     `}</style>
   </div>
-)
+);
 
-export default Home
+export default Home;

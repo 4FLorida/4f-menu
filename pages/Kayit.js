@@ -1,6 +1,9 @@
 import React  from 'react';
 import Head from 'next/head';
 
+import Navbar from '../components/Navbar';
+import Topbar from '../components/Topbar';
+
 const Kayit = () => (
   <div>
     <Head>

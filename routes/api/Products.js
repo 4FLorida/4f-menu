@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const redis = require('redis');
+const redis = require('../../middleware/redis');
 const Product = require('../../models/Product');
 
 // [GET] Fetch from cache until database has change
-router.get('/', redis.checkCache, (req, res) => {
+router.get('/', redis.checkCache,(req, res) => {
   const promise = Product.find({});
   promise
     .then(products =>
@@ -54,13 +54,14 @@ router.post('/add/', (req, res) => {
   const newProduct = new Product({
     name: req.body.name,
     price: req.body.price,
-    description: req.body.description,
+    info: req.body.info,
+    image: req.body.image,
   });
   newProduct
     .save()
     .then(product => res.json({ success: true, product }))
     .then(redis.updateCache())
-    .catch(() => res.json({ success: false, message: 'Ürün eklenemedi' }));
+    .catch((err) => res.json({ success: false, message: 'Ürün eklenemedi',err }));
 });
 
 // [DELETE] Delete product by id

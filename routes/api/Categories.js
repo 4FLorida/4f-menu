@@ -4,7 +4,7 @@ const redis = require('redis');
 const Category = require('../../models/Category');
 
 // [GET] Fetch from cache until database has change
-router.get('/', redis.checkCache, (req, res) => {
+router.get('/', (req, res) => {
   const promise = Category.find({});
   promise
     .then(categories =>

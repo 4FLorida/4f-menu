@@ -3,27 +3,39 @@ import styled, { css } from 'styled-components';
 const Button = styled.button`
   border-color: transparent;
   border: 1px solid transparent;
-  line-height: 1.5;
-  border-radius: 0.55rem;
-  margin-top:2px;
-  font-weight: 500;
-  font-family:Poppins;
-  font-style:SemiBold;
-  font-size: 16px;
+  border-radius: 0.75rem;
+  margin-top: 1px;
+  margin-right: 1px;
+  float: right;
+  font-size: 25px;
   color: #ffffff;
+  text-align: center;
+
   :focus {
     outline: none;
   }
-
-  text-align: center;
+  @media (max-width: 768px) {
+    width: 36px;
+    height: 36px;
+  }
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    width: 36px;
+  }
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    width: 36px;
+  }
 
   ${props =>
     props.create &&
     css`
       background-color: #ff334b;
       border: 1px solid #ff334b;
-      height: 32px;
-      width: 160px;
+      height: 36px;
+      width: 36px;
+
+      @media (min-width: 992px) and (max-width: 1199.98px) {
+        width: 36px;
+      }
     `};
   ${props =>
     props.cancel &&

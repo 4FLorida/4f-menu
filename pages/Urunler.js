@@ -28,7 +28,7 @@ const Urunler = () => (
   <Provider ProductStore={productStore}>
     <Head>
       <title>4F Menu | Ürünler</title>
-      <style global>{`
+      <style global="true">{`
       body {
         margin: 0;
      }

@@ -17,21 +17,29 @@ class Top extends Component {
     );
   }
 
+  deleteManyProducts() {
+    const { ProductStore } = this.props;
+    ProductStore.deleteManyProduct();
+  }
+
   render() {
     const { ProductStore } = this.props;
     return (
       <Row>
         <Col>
-        <Searchbox
-        value={ProductStore.query}
-        onChange={this.handleSearchChange.bind(this)}
-      ></Searchbox>
-      
-      <Button create>Ürün Oluştur</Button>
+          <Searchbox
+            value={ProductStore.query}
+            onChange={this.handleSearchChange.bind(this)}
+            placeholder="Ürün Arama"
+          ></Searchbox>
+
+          <Button create>+</Button>
+          {/* <Button create onClick={this.deleteManyProducts.bind(this)}>Hepsini Sil</Button> // çoklu silme */}
         </Col>
-        <Col><Title float="right">Ürünler</Title></Col>
+        <Col>
+          <Title float="right">Ürünler ({ProductStore.products.length})</Title>
+        </Col>
       </Row>
-      
     );
   }
 }

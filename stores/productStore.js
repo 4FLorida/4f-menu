@@ -1,10 +1,12 @@
-import { observable, action } from 'mobx';
+import { observable, action, toJS } from 'mobx';
 import axios from 'axios';
 
 class ProductStore {
   @observable products = [];
   @observable filteredProducts = [];
+  @observable selectedProducts = [];
   @observable isEdit = false;
+  @observable isChecked = false;
   @observable query = '';
   @observable message = '';
   @observable product = {
@@ -35,7 +37,17 @@ class ProductStore {
     axios
       .delete('http://localhost:5000/api/products/delete/' + this.product.id)
       .then(res => {
-        res.data.success ? this.getAll() : alert('ERROR');
+        res.data.success ? this.getAll() : alert('Hata');
+      });
+  }
+
+  @action deleteManyProduct() {
+    axios
+      .delete(
+        'http://localhost:5000/api/products/deleteMany/' + this.selectedProducts
+      )
+      .then(res => {
+        res.data.success ? this.getAll() : alert('Hata');
       });
   }
 
@@ -45,7 +57,7 @@ class ProductStore {
         name: this.product.name,
         price: this.product.price,
         info: this.product.info,
-        image:this.product.image,
+        image: this.product.image,
       })
       .then(res => {
         res.data.success ? this.getAll() : this.setMessage(res.data.message);
@@ -79,7 +91,7 @@ class ProductStore {
   }
 
   @action setImage(image) {
-    this.product.image= image;
+    this.product.image = image;
   }
 
   @action setEdit(bool) {
@@ -98,11 +110,22 @@ class ProductStore {
     this.filteredProducts = products;
   }
 
+  @action setSelectedProducts(id) {
+    this.selectedProducts.push(id);
+  }
+
+  @action deleteSelectedProduct(id) {
+    var index = this.selectedProducts.indexOf(id);
+    if (index != -1) this.selectedProducts.splice(index, 1);
+  }
+
   @action setMessage(message) {
     this.message = message;
   }
 
-
+  @action setChecked(bool) {
+    this.setChecked(bool);
+  }
 }
 
 const productStore = new ProductStore();

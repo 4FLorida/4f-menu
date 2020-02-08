@@ -5,21 +5,18 @@ margin-bottom:8px;
 margin-left:auto;
 margin-right:auto;
 margin-top:10px;
+display:flex;
 @media (min-width: 480px) {
   width: auto;
-  display:flex;
 }
 @media (min-width: 576px) {
   width: 540px;
-  display:flex;
 }
 @media (min-width: 768px) {
   width: 720px;
-  display:flex;
 }
 @media (min-width: 992px) {
   width: 960px;
-  display:flex;
 }
 @media (min-width: 1200px) {
   width: 1100px;

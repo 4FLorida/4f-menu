@@ -9,18 +9,23 @@ import Title from '../Title';
 @inject('ProductStore')
 @observer
 class Top extends Component {
-  handleSearchChange(e) {
+  handleSearchChange = e => {
     const { ProductStore } = this.props;
     ProductStore.query = e.target.value;
     ProductStore.filteredProducts = ProductStore.products.filter(product =>
       product.name.toLowerCase().includes(ProductStore.query.toLowerCase())
     );
-  }
+  };
 
-  deleteManyProducts() {
+  deleteManyProducts = () => {
     const { ProductStore } = this.props;
     ProductStore.deleteManyProduct();
-  }
+  };
+
+  addNewProduct = () => {
+    const { ProductStore } = this.props;
+    ProductStore.addProduct;
+  };
 
   render() {
     const { ProductStore } = this.props;
@@ -31,13 +36,14 @@ class Top extends Component {
             value={ProductStore.query}
             onChange={this.handleSearchChange.bind(this)}
             placeholder="Ürün Arama"
-          ></Searchbox>
-
-          <Button create>+</Button>
+          />
+          <Button create onClick={null}>
+            +
+          </Button>
           {/* <Button create onClick={this.deleteManyProducts.bind(this)}>Hepsini Sil</Button> // çoklu silme */}
         </Col>
         <Col>
-          <Title float="right">Ürünler ({ProductStore.products.length})</Title>
+          <Title float="right" bold>Ürünler ({ProductStore.products.length})</Title>
         </Col>
       </Row>
     );

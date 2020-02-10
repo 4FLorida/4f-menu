@@ -14,7 +14,7 @@ class ProductList extends Component {
   componentDidMount() {
     const { ProductStore } = this.props;
     ProductStore.getAll();
-    ProductStore.selectedProducts=[];
+    ProductStore.selectedProducts = [];
   }
 
   addProduct() {
@@ -88,12 +88,21 @@ class ProductList extends Component {
 
     return ProductStore.filteredProducts.length > 0
       ? ProductStore.filteredProducts.map(product => (
-          <ProductCard key={product._id} checked={ProductStore.selectedProducts.includes(product._id)}>
+          <ProductCard
+            key={product._id}
+            checked={ProductStore.selectedProducts.includes(product._id)}
+          >
             {/* <Form.Check
               onChange={this.handleSelectedItems.bind(this)}
               value={product._id}
             /> */}
-            <Checkbox onChange={this.handleSelectedItems} value={product._id} />
+            <label>
+              <Checkbox
+                onChange={this.handleSelectedItems}
+                value={product._id}
+                checked={ProductStore.selectedProducts.includes(product._id)}
+              />
+            </label>
             <ProductCardImage src={product.image}></ProductCardImage>
             <ProductName>{product.name}</ProductName>
             <ProductPrice>{product.price}₺</ProductPrice>
@@ -206,13 +215,23 @@ class ProductList extends Component {
         ProductStore.filteredProducts.length == 0
       ? null
       : ProductStore.products.map(product => (
-          <ProductCard key={product._id} checked={ProductStore.selectedProducts.includes(product._id)} >
+          <ProductCard
+            key={product._id}
+            checked={ProductStore.selectedProducts.includes(product._id)}
+          >
             {/* <Form.Check
               onChange={this.handleSelectedItems.bind(this)}
               value={product._id}
             /> */}
 
-            <Checkbox onChange={this.handleSelectedItems} value={product._id} />
+            <label>
+              <Checkbox
+                onChange={this.handleSelectedItems}
+                value={product._id}
+                checked={ProductStore.selectedProducts.includes(product._id)}
+              />
+            </label>
+
             <ProductCardImage src={product.image}></ProductCardImage>
             <ProductName>{product.name}</ProductName>
             <ProductPrice>{product.price}₺</ProductPrice>

@@ -15,11 +15,9 @@ const Searchbox = styled.input`
   background-repeat: no-repeat;
   padding-left: 40px;
 
-  :focus {
+  &:focus {
     outline: none;
-    --webkit-box-shadow: 0 8px 8px -6px grey;
-    -moz-box-shadow: 0 8px 8px -6px grey;
-    box-shadow: 0 8px 8px -6px grey;
+    filter:drop-shadow(0px 0px 5px lightgrey);
   }
   @media (min-width: 576px) and (max-width: 767.98px) {
     width: 50%;

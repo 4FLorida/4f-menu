@@ -5,10 +5,13 @@ const ProductCard = styled.div`
   width:49.8%;
   margin-bottom:1px;
   margin-right:1px;
+  ${({ checked }) =>
+    checked
+      ? `background-color:rgba(105, 121, 248, 0.2);`
+      : `background-color:white`};
   display:flex;
-  background-color: white;
-  border:0.5px solid lightgrey;
-
+  border:.5px solid lightgrey;
+  transition:height 0.3s ease;
 
   @media (min-width: 480px) {
   }
@@ -23,6 +26,14 @@ const ProductCard = styled.div`
   }
   @media (min-width: 1200px) {
   }
+
+  &:hover { 
+    -webkit-transform:translateY(3px);
+    -ms-transform:translateY(3px);
+    transform:translateY(3px);
+    -webkit-transition:all .3s ease;
+    transition:all .3s ease;
+    z-index:2;
 `;
 
 export default ProductCard;

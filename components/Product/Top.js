@@ -12,8 +12,11 @@ class Top extends Component {
   handleSearchChange = e => {
     const { ProductStore } = this.props;
     ProductStore.query = e.target.value;
-    ProductStore.filteredProducts = ProductStore.products.filter(product =>
-      product.name.toLowerCase().includes(ProductStore.query.toLowerCase())
+    ProductStore.filteredProducts = ProductStore.products.filter(
+      product =>
+        product.name
+          .toLowerCase()
+          .includes(ProductStore.query.replace(/\s/g, '')) // Boşluk kontrolü
     );
   };
 
@@ -43,7 +46,9 @@ class Top extends Component {
           {/* <Button create onClick={this.deleteManyProducts.bind(this)}>Hepsini Sil</Button> // çoklu silme */}
         </Col>
         <Col>
-          <Title float="right" bold>Ürünler ({ProductStore.products.length})</Title>
+          <Title float="right" bold>
+            Ürünler ({ProductStore.products.length})
+          </Title>
         </Col>
       </Row>
     );

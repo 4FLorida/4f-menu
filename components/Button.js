@@ -32,7 +32,6 @@ const Button = styled.button`
       border: 1px solid #ff334b;
       height: 36px;
       width: 36px;
-
       @media (min-width: 992px) and (max-width: 1199.98px) {
         width: 36px;
       }

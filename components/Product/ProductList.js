@@ -8,15 +8,13 @@ import EditIcon from './EditIcon';
 import RemoveIcon from './RemoveIcon';
 import Checkbox from './Checkbox';
 
-
 @inject('ProductStore')
 @observer
 class ProductList extends Component {
   componentDidMount() {
     const { ProductStore } = this.props;
-    console.log(ProductStore.selectedProducts);
     ProductStore.getAll();
-    
+    ProductStore.selectedProducts=[];
   }
 
   addProduct() {
@@ -74,42 +72,28 @@ class ProductList extends Component {
     ProductStore.setDescription(e.target.value);
   }
 
-  handleSearchChange(e) {
-    const { ProductStore } = this.props;
-    ProductStore.query = e.target.value;
-    ProductStore.filteredProducts = ProductStore.products.filter(product =>
-      product.name.toLowerCase().includes(ProductStore.query.toLowerCase())
-    );
-  }
-
-  handleSelectedItems(e) {
+  handleSelectedItems = e => {
     const { ProductStore } = this.props;
     const { value, checked } = e.target;
-    ProductStore.isChecked=checked;
     if (checked) {
       ProductStore.setSelectedProducts(value);
     } else {
       var index = ProductStore.selectedProducts.indexOf(value);
       if (index != -1) ProductStore.selectedProducts.splice(index, 1);
     }
-  }
-
+  };
 
   render() {
     const { ProductStore } = this.props;
 
     return ProductStore.filteredProducts.length > 0
       ? ProductStore.filteredProducts.map(product => (
-          <ProductCard>
+          <ProductCard key={product._id} checked={ProductStore.selectedProducts.includes(product._id)}>
             {/* <Form.Check
               onChange={this.handleSelectedItems.bind(this)}
               value={product._id}
             /> */}
-            <Checkbox
-              checked={true}
-              onChange={this.handleSelectedItems}
-              value={product._id}
-            />
+            <Checkbox onChange={this.handleSelectedItems} value={product._id} />
             <ProductCardImage src={product.image}></ProductCardImage>
             <ProductName>{product.name}</ProductName>
             <ProductPrice>{product.price}₺</ProductPrice>
@@ -222,16 +206,13 @@ class ProductList extends Component {
         ProductStore.filteredProducts.length == 0
       ? null
       : ProductStore.products.map(product => (
-          <ProductCard key={product._id}>
+          <ProductCard key={product._id} checked={ProductStore.selectedProducts.includes(product._id)} >
             {/* <Form.Check
               onChange={this.handleSelectedItems.bind(this)}
               value={product._id}
             /> */}
 
-<Checkbox 
-              onChange={this.handleSelectedItems.bind(this)}
-              value={product._id}
-            />
+            <Checkbox onChange={this.handleSelectedItems} value={product._id} />
             <ProductCardImage src={product.image}></ProductCardImage>
             <ProductName>{product.name}</ProductName>
             <ProductPrice>{product.price}₺</ProductPrice>

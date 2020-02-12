@@ -33,6 +33,7 @@ const StyledCheckbox = styled.div`
     background: #18a0fb;
     border-radius: 3px;
     border-color: #18a0fb;
+    
     transform: translate3d(0, 0, 0) rotate(360deg);
   }
 
@@ -45,8 +46,8 @@ const StyledCheckbox = styled.div`
   }
 `;
 
-const Checkbox = ({ className, checked, ...props }) => (
-  <CheckboxContainer className={className}>
+const Checkbox = ({checked, ...props }) => (
+  <CheckboxContainer>
     <HiddenCheckbox checked={checked} {...props} />
     <StyledCheckbox checked={checked}>
       <Icon viewBox="0 0 24 24">

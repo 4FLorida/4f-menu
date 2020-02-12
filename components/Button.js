@@ -6,10 +6,11 @@ const Button = styled.button`
   border-radius: 0.75rem;
   margin-top: 1px;
   margin-right: 1px;
-  float: right;
   font-size: 25px;
   color: #ffffff;
   text-align: center;
+
+  ${({fontSize}) => `font-size:${fontSize}px;`}
 
   :focus {
     outline: none;
@@ -54,5 +55,22 @@ const Button = styled.button`
       height: 32px;
       width: 82px;
     `}
+
+    ${props =>
+      props.login &&
+      css`
+        background-color: #109cf1;
+        border-radius: 4px;
+        height: 32px;
+        width: 237px!important;
+        margin:auto;
+        float:center;
+        margin-right:5px;
+        background-color:#FF334B;
+        font-size:18px;
+        :hover {
+          
+        }
+      `}
 `;
 export default Button;

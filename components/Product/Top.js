@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Row from '../Row';
 import Col from '../Col';
 import Searchbox from '../Searchbox';
@@ -32,6 +32,7 @@ class Top extends Component {
 
   render() {
     const { ProductStore } = this.props;
+
     return (
       <Row>
         <Col>
@@ -43,7 +44,8 @@ class Top extends Component {
           <Button create onClick={null}>
             +
           </Button>
-          {/* <Button create onClick={this.deleteManyProducts.bind(this)}>Hepsini Sil</Button> // çoklu silme */}
+          {/* <Button fontSize={20} create onClick={this.deleteManyProducts.bind(this)}>Sil</Button> */}
+          
         </Col>
         <Col>
           <Title float="right" bold>

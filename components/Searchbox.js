@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Searchbox = styled.input`
   height: 32px;
-  width: 83%;
+  width: 73%;
   border-radius: 20px;
   margin-top: 1px;
   background: #ffffff;

@@ -20,7 +20,7 @@
     "mobx": "^5.15.4",
     "mobx-react": "^6.1.4",
     "mongoose": "^5.8.10",
-    "next": "9.2.1",
+    "next": "9.3.2",
     "react": "16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "16.12.0",

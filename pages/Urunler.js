@@ -8,6 +8,8 @@ import Topbar from '../components/Topbar';
 import Content from '../components/Content';
 import ProductList from '../components/Product/ProductList';
 import Top from '../components/Product/Top';
+import Footer from "../components/Footer";
+import Title from "../components/Title";
 
 const Urunler = () => (
   <Provider ProductStore={productStore}>
@@ -25,9 +27,9 @@ const Urunler = () => (
     <Content>
       <ProductList></ProductList>
     </Content>
-    {/* <Footer>
+    <Footer>
       <Title color="white" lineHeight="30px" marginRight="10px" float="center"> OKTAY ©™ 2020 4F</Title>
-    </Footer> */}
+    </Footer>
   </Provider>
 );
 

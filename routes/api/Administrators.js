@@ -60,8 +60,8 @@ router.post('/register', (req, res) => {
     newAdministrator
       .save()
       .then(administrator => res.json({ success: true, data: administrator }))
-      .catch(() => {
-        res.json({ success: false, message: 'Kullanıcı zaten kayıtlı.' });
+      .catch((err) => {
+        res.json({ errMsg: err.message, success: false, message: 'Kullanıcı zaten kayıtlı.' });
       });
   });
 });
